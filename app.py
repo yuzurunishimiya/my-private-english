@@ -4,11 +4,13 @@ from flask import jsonify
 from pymongo import errors
 
 from packages_learning.auth.auth import auth_bp
+from packages_learning.content.vocabulary import vocab_bp
 
 app = Flask(__name__)
 app.config.from_object(Config)
 
 app.register_blueprint(auth_bp)
+app.register_blueprint(vocab_bp)
 
 
 @app.errorhandler(errors.ServerSelectionTimeoutError)

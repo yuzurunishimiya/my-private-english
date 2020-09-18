@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sony</title>
+</head>
+<body>
+    <div class="wrapper">
+    </div>
+    <div class="container">
+        <div class="judul">
+            <p>
+                Kumpulan Vocab Pribadi
+            </p>
+        </div>
+        <div id="content">
+            {% if data %}
+                {% for i in data %}
+                    <div class="header-items">{{ i }}</div>
+                    {% for item in data[i] %}
+                        {% if item["code"] == "en-id" %}
+                            <div class="main-items">
+                                <div class="item">{{ item["english"] }}</div>
+                                <div class="item">{{ item["bahasa"] }}</div>
+                            </div>
+                        {% elif item["code"] == "id-en" %}
+                            <div class="main-items">
+                                <div class="item">{{ item["english"] }}</div>
+                                <div class="item">{{ item["bahasa"] }}</div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</body>
+
+<style>
+    body {
+        box-sizing: border-box;
+        background: url('assets/images/yuzuru.jpg') no-repeat fixed;
+        margin: 0;       
+    }
+    .wrapper {
+        position: fixed;
+        top: 0;
+        margin: 0 0;
+        height: 100%;
+        width: 100%;
+        z-index: -10;
+        background-color: rgba(200, 100, 200, 0.2);
+    }
+    .container {
+        border: 1px black solid;
+        border-radius: 15px;
+        background-color: rgba(233, 198, 222, 0.75);
+        margin: 2.5% 20%;
+        min-height: 90vh;
+        padding: 20px;
+        word-wrap: break-word;
+    }
+    .judul {
+        text-align: center;
+    }
+    .judul p {
+        display: inline-block;
+        text-align: center;
+        font-size: 35px;
+        margin-top: 3%;
+        color: rgb(220, 20, 107);
+        border-bottom: 2px solid rgb(220, 20, 107);
+        
+    }
+    #content {
+        padding: 4%;
+        margin: 4%;
+        margin-top: 0px;
+        width: auto;
+        text-align: center;
+    }
+    .header-items {
+        margin-top: 2.5%;
+        margin-bottom: 0.5% ;
+        font-size: 30px;
+        border-radius: 10px;
+        background-color: rgb(231, 161 , 167);
+        padding: 20px 30px;
+    }
+    .main-items {
+        display: flex;
+        flex-shrink: 0;
+        overflow: scroll;
+        scrollbar-width: none;
+    }
+    .item {
+        flex: 1;
+        text-align: justify;
+        border-radius: 10px;
+        background-color: rgb(231, 161 , 167);
+        padding: 10px 20px;
+        margin: 5px 2px;
+    }
+    @media screen and (max-width: 599px) {
+        #content {
+            margin: 0;
+            padding: 1%;
+        }
+        .container {
+            margin: 2.5% 3%;
+        }
+        .item {
+            padding: 10px 6px;
+            text-align: center;
+            margin: 2.5px 2px;
+        }
+        body {
+            background: url('assets/images/mobile_yuzuru.jpg') no-repeat fixed;
+        }
+    }
+    @media screen
+    and (max-width: 1000px)
+    and (min-width: 600px)
+    {
+        .container {
+            margin: 2.5% 8%;
+        }
+        body {
+            background: url('assets/images/yuzuru.jpg') no-repeat right fixed;
+        }
+    }
+</style>
+
+</html>
