@@ -1,0 +1,80 @@
+
+<h1>Sign Up</h1>
+<form action="" method="POST" novalidate>
+    {{ form.hidden_tag() }}
+
+    {% if error %}
+        <div class="error-register">
+            <p>{{ error }}</p>
+        </div>
+    {% endif %}
+
+    {% if success %}
+        <div class="success-register">
+            <p>Your account has been created</p>
+            <p style="display: inline-block;">Go to login?</p>
+            <button onclick="location.href='/login'" type="button">To Login</button>
+        </div>
+    {% endif %}
+
+    <p>
+        {{ form.email.label }} </br>
+        {{ form.email(size=40) }} </br>
+
+        {% for error in form.email.errors %}
+            <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+    </p>
+
+    <p>
+        {{ form.username.label }} </br>
+        {{ form.username(size=40) }} </br>
+        
+        {% for error in form.username.errors %}
+            <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+    </p>
+
+    <p>
+        {{ form.password.label }} </br>
+        {{ form.password(size=40) }} </br>
+
+        {% for error in form.password.errors %}
+            <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+    </p>
+
+    <p>
+        {{ form.full_name.label }} </br>
+        {{ form.full_name(size=40) }} </br>
+
+        {% for error in form.full_name.errors %}
+            <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+    </p>
+
+    <p>{{ form.submit() }}</p>
+
+</form>
+
+<style>
+    .error-register {
+        border: 1px red solid;
+        padding: 5px;
+        display: inline-block;
+    }
+    .error-register p {
+        margin: 0;
+        color: red;
+    }
+
+    .success-register {
+        border: 1px green solid;
+        padding: 5px;
+        display: inline-block;
+    }
+    .success-register p {
+        margin: 0;
+        color: black;
+    }
+</style>

@@ -1,0 +1,40 @@
+
+
+<h1>Sign In</h1>
+<form action="" method="POST" novalidate>
+    {{ form.hidden_tag() }}
+
+    {% if error %}
+        <div class="error-login">
+            <p>{{ error }}</p>
+        </div>
+    {% endif %}
+
+    <p>
+        {{ form.username.label }} </br>
+        {{ form.username(size=32) }} </br>
+        {% for error in form.username.errors %}
+        <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.password.label }} </br>
+        {{ form.password(size=32) }} </br>
+        {% for error in form.password.errors %}
+        <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+    </p>
+    <p>{{ form.submit() }}</p>
+</form>
+
+<style>
+    .error-login {
+        border: 1px red solid;
+        padding: 5px;
+        display: inline-block;
+    }
+    .error-login p {
+        margin: 0;
+        color: red;
+    }
+</style>
